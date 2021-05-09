@@ -4,7 +4,7 @@ schema {
 
 type Query{
     allBooks : [Book]
-    book (is: String) : Book
+    book (id: String) : Book
 }
 
 type Book {
