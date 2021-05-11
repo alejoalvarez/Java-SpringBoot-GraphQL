@@ -1,7 +1,4 @@
 # GraphQL-Java
-This is an example with Java and GraphQL
+Examples with spring boot and graphQL
 
-## Dependencies gradle:
-- Web - Build web, including RESTful, applications using Spring MVC. Uses Apache Tomcat as the default embedded container.
-- HSQLDB - Lightweight 100% Java SQL Database Engine.
-- Lombok - Java annotation library which helps to reduce boilerplate code.
+

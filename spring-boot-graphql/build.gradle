@@ -21,6 +21,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//implementation group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
+	//implementation group: 'io.leangen.graphql', name: 'graphql-spqr-spring-boot-starter', version: '0.0.6'
 	compile 'com.graphql-java:graphql-java:11.0'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.hsqldb:hsqldb'
