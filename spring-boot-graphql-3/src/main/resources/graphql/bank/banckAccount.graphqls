@@ -1,6 +1,7 @@
 # Type for bank account fields
 type BankAccount {
     id: ID!
+    client: Client
     name: String!
     currency: Currency!
 }

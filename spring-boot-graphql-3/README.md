@@ -14,7 +14,7 @@ type **BankAccount**
 ```graphql
 type BankAccount {
     id: ID!
-    name: String!
+    client: Client!
     currency: Currency!
 }
 ```
@@ -26,6 +26,16 @@ enum Currency {
     USD
 }
 ```
+
+type **Client**
+````graphql
+type Client {
+    id: ID!
+    firstName: String!
+    middleNames: [String!]
+    lastName: String!
+}
+````
 
 Run code and type:
 
