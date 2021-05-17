@@ -4,9 +4,11 @@ import lombok.Builder;
 import lombok.Value;
 
 @Value
-@Builder(toBuilder = true)
-public class BankAccount {
+@Builder
+public class Client {
+
     String id;
-    Client client;
-    Currency currency;
+    String firstName;
+    String middleName;
+    String lastName;
 }

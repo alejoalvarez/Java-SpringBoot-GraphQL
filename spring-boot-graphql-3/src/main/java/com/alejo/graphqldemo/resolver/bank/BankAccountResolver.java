@@ -1,4 +1,4 @@
-package com.alejo.graphqldemo.resolver;
+package com.alejo.graphqldemo.resolver.bank;
 
 import com.alejo.graphqldemo.domain.BankAccount;
 import com.alejo.graphqldemo.domain.Currency;
@@ -16,7 +16,6 @@ public class BankAccountResolver implements GraphQLQueryResolver {
         return BankAccount.builder()
                 .id(id)
                 .currency(Currency.PESOS)
-                .name("Alejo")
                 .build();
     }
 }

@@ -13,7 +13,7 @@ type Query{
 type **BankAccount**
 ```graphql
 type BankAccount {
-    id: ID!
+    id: String!
     client: Client!
     currency: Currency!
 }
@@ -30,9 +30,9 @@ enum Currency {
 type **Client**
 ````graphql
 type Client {
-    id: ID!
+    id: String!
     firstName: String!
-    middleNames: [String!]
+    middleName: String!
     lastName: String!
 }
 ````
@@ -46,10 +46,14 @@ http://localhost:8085/gui
 query:
 ```graphql
 {
-  bankAccount(id: "1234") {
+  bankAccount(id: "1234") { # bank resolver
     id
-    name
     currency
+    client { # client resolver
+      id
+      firstName
+      lastName
+    }
   }
 }
 ```
@@ -60,8 +64,12 @@ result:
   "data": {
     "bankAccount": {
       "id": "1234",
-      "name": "Alejo",
-      "currency": "PESOS"
+      "currency": "PESOS",
+      "client": {
+        "id": "123",
+        "firstName": "Alejo",
+        "lastName": "Alvarez"
+      }
     }
   }
 }

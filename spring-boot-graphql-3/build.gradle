@@ -25,6 +25,8 @@ dependencies {
 	implementation group: 'com.graphql-java-kickstart', name: 'graphql-spring-boot-starter', version: '11.1.0'
 	implementation group: 'com.graphql-java-kickstart', name: 'graphql-java-tools', version: '11.0.1'
 	implementation group: 'io.leangen.graphql', name: 'graphql-spqr-spring-boot-starter', version: '0.0.6'
+	implementation group: 'com.graphql-java', name: 'graphql-java', version: '16.2'
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
