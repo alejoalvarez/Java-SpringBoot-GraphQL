@@ -1,0 +1,6 @@
+# Type for bank account fields
+type BankAccount {
+    id: ID!
+    name: String!
+    currency: Currency!
+}

@@ -1,0 +1,5 @@
+# Available correncies for this exercise
+enum Currency {
+    PESOS
+    USD
+}

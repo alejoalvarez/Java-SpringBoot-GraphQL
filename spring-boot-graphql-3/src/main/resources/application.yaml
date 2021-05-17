@@ -1,0 +1,7 @@
+server:
+  port: 8085
+
+graphql:
+  spqr:
+    gui:
+      enabled: true
