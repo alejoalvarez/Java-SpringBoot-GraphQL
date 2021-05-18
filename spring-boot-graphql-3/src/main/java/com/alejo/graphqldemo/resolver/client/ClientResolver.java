@@ -1,4 +1,4 @@
-package com.alejo.graphqldemo.resolver;
+package com.alejo.graphqldemo.resolver.client;
 
 import com.alejo.graphqldemo.domain.BankAccount;
 import com.alejo.graphqldemo.domain.Client;
@@ -10,13 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClientResolver implements GraphQLResolver<BankAccount> {
 
-    public Client client(BankAccount bankBankAccount){
-        log.info("Retrieving client information wiht bank account id {} ", bankBankAccount.getId() );
+    public Client client(BankAccount bankAccount){
+        log.info("Retrieving client information wiht bank account id {} ", bankAccount.getId() );
 
+        //throw new RuntimeException("Spring exception not found information");
         return Client.builder()
-                .id("123")
-                .firstName("Alejo")
-                .lastName("Alvarez")
+                .id("111")
+                .firstName("Alejo11")
+                .lastName("Alvarez11s")
                 .middleName("N/A")
                 .build();
     }
