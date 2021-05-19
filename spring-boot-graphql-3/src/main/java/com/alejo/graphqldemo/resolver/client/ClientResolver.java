@@ -13,7 +13,6 @@ public class ClientResolver implements GraphQLResolver<BankAccount> {
     public Client client(BankAccount bankAccount){
         log.info("Retrieving client information wiht bank account id {} ", bankAccount.getId() );
 
-        //throw new RuntimeException("Spring exception not found information");
         return Client.builder()
                 .id("111")
                 .firstName("Alejo11")

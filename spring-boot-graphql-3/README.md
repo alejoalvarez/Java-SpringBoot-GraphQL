@@ -74,3 +74,15 @@ result:
   }
 }
 ```
+
+Mutation for create a BankAccount
+```graphql
+mutation CREATE_BANK_ACCOUNT{
+    createBankAccount(input: {
+        firstName: "Alejo"
+    }) {
+        id
+        currency
+    }   
+}
+```
