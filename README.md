@@ -114,8 +114,18 @@ In REST, any request might end up causing some side-effects on the server, but b
 
 Just like in queries, if the mutation field returns an object type, you can ask for nested fields. This can be useful for fetching the new state of an object after an update. 
 
+## File Upload
 
-- File Upload
+GraphQL Spring Boot fully supports file uploading via multi-part file upload. 
+
+In your resolver you can get access to a list of Parts via the DataFetchingEnvironment context. You can then get the file's name, size and more importantly its content via the inputstream. 
+
+If you need to buffer the files content into bytes/memory, then I recommend you limit this to a maximum number of concurrent invocations. This will stop the app from crashing with an out-of-memory error if large numbers are uploaded at the same time.
+
+You can adjust tomcats maximum file multipart size with the following properties:
+spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=10MB
+
 - DataFetchingEnvironment
 - SelectionSet
 - Custom Scalar

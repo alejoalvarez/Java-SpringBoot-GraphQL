@@ -75,7 +75,7 @@ result:
 }
 ```
 
-Mutation for create a BankAccount
+Mutation for create a BankAccount (CREATE_BANK_ACCOUNT is optional)
 ```graphql
 mutation CREATE_BANK_ACCOUNT{
     createBankAccount(input: {
