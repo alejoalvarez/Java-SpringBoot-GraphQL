@@ -132,7 +132,30 @@ ExecutionId getExecutionId() - each query execution is given a unique id. You ca
 
 DataLoaderRegistry() - This will provide access to the graphql dataloaders, use to solve the n+1 problem.
 
-- SelectionSet
+## SelectionSet
+
+A very powerful feature of graphql spring boot is that you have access to the query's selection set. A selection set is the set of fields the user requested. 
+
+Having direct access to the fields can enable you to make performance optimized queries requesting only the needed data. For example an SQL backed system may be able to use the field sub selection to only retrieve the columns that have been asked for.
+
+If you look ahead in the selection set, you may be able to optimize further and collapse two backend resource calls into one. For example, if you can retrieve the sellingLocations data within the products API call. You can group everything into one API query instead of two.
+
+```graphql
+query {
+        products {
+            # the fields below represent the selection set
+            name
+            description
+            sellingLocations {
+                state
+            }
+        }
+    }
+```
+
+The selection set (DataFetchingFieldSelectionSet) contains many useful utility methods such as:  contains, containsAnyOf, containsAnyOf. These can be used as the predicate to make your API call selection. 
+
+To get the requested field names you can stream the fields, filter and collect into a set.
 - Custom Scalar
 - Date Type
 - Input validation
