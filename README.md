@@ -114,19 +114,24 @@ In REST, any request might end up causing some side-effects on the server, but b
 
 Just like in queries, if the mutation field returns an object type, you can ask for nested fields. This can be useful for fetching the new state of an object after an update. 
 
-## File Upload
+## DataFetchingEnvironment
 
-GraphQL Spring Boot fully supports file uploading via multi-part file upload. 
+Every resolver is passed a DataFetchingEnvironment object which allows it to know more about what is being fetched and what arguments have been provided. To get access to this class, set it as the last parameter of your resolver method. It will be automatically injected. 
 
-In your resolver you can get access to a list of Parts via the DataFetchingEnvironment context. You can then get the file's name, size and more importantly its content via the inputstream. 
+Here are some of my favorite DataFetchingEnvironment use-cases from production. Methods:
 
-If you need to buffer the files content into bytes/memory, then I recommend you limit this to a maximum number of concurrent invocations. This will stop the app from crashing with an out-of-memory error if large numbers are uploaded at the same time.
+getArguments() - this represents the arguments that have been provided on a field and the values of those arguments that have been resolved from passed in variables, literals and default argument values.
 
-You can adjust tomcats maximum file multipart size with the following properties:
-spring.servlet.multipart.max-file-size=10MB
-spring.servlet.multipart.max-request-size=10MB
+getContext() - the context is object is set up when the query is first executed and stays the same over the lifetime of the query. The context can be any value and is typically used to give each data fetcher some calling context needed when trying to get field data. For example the current user authorization context can be created and set at the very start of the query, then all resolvers can access this context and pass it to the downstream services or resources.
 
-- DataFetchingEnvironment
+ExecutionStepInfo getExecutionStepInfo() - Explains how this resolver was executed. I.e. the steps executed prior. This is available in a nice path format. Have a look
+
+DataFetchingFieldSelectionSet getSelectionSet() - the selection set represents the child fields that have been “selected” under neath the currently executing field. This can be useful to help look ahead to see what sub field information a client wants. I have a dedicated video on this.
+
+ExecutionId getExecutionId() - each query execution is given a unique id. You can use this perhaps on logs to tag each individual query or use a correlation and span id.
+
+DataLoaderRegistry() - This will provide access to the graphql dataloaders, use to solve the n+1 problem.
+
 - SelectionSet
 - Custom Scalar
 - Date Type
